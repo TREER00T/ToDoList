@@ -2,11 +2,19 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TodoController;
+use App\Http\Controllers\HomeController;
 
+Route::get('/todos', [TodoController::class, 'index'])->name('todo.index');
+Route::get('/todos/create', [TodoController::class, 'create']);
+Route::post('/todos/create', [TodoController::class, 'store']);
+Route::put('/todos/{todo}/update', [TodoController::class, 'update'])->name('todo.update');
+Route::get('/todos/{todo}/edit', [TodoController::class, 'edit']);
 
-Route::get('/', 'App\Http\Controllers\UserController@index');
-Route::post('/upload', [App\Http\Controllers\UserController::class, 'uploadAvatar']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [UserController::class, 'index']);
+Route::post('/upload', [UserController::class, 'uploadAvatar']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 
 
