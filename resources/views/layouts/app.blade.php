@@ -96,7 +96,7 @@
                 let fileName = $(this).val().split("\\").pop();
                 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
-            $('#btn').on('click', function () {
+            $('{{'#'.$todo->id}}').on('click', function () {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You want to delete this todo?",
@@ -107,7 +107,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        let form = document.getElementById("delete-form");
+                        let form = document.getElementById("{{'delete-form-'.$todo->id}}");
                         form.submit();
                         Swal.fire(
                             'Deleted!',

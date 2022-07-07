@@ -18,14 +18,13 @@
                     <div style="position: absolute; right: 20px;">
                         <a href="{{'/example/public/todos/'.$todo->id.'/edit'}}" type="button"
                            class="btn btn-outline-warning">Edit</a>
-                        <button type="button" id="btn" class="btn btn-outline-danger">Delete</button>
 
-                        <form id="delete-form" style="position: absolute; right: 20px;" method="post"
+                        <form id="{{'delete-form-'.$todo->id}}" style="position: absolute; right: 20px;" method="post"
                               action="{{'/example/public/todos/'.$todo->id.'/delete'}}">
                             @csrf
                             @method('DELETE')
-                            <input name="id">
                         </form>
+                        <button type="button" id="{{$todo->id}}" class="btn btn-outline-danger">Delete</button>
 
                     </div>
                 </li>
