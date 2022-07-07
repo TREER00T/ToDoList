@@ -96,31 +96,10 @@
                 let fileName = $(this).val().split("\\").pop();
                 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
-            $('{{'#'.$todo->id}}').on('click', function () {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You want to delete this todo?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        let form = document.getElementById("{{'delete-form-'.$todo->id}}");
-                        form.submit();
-                        Swal.fire(
-                            'Deleted!',
-                            'Your todo has been deleted.',
-                            'success'
-                        )
-                    }
-                })
-            })
         </script>
     </main>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

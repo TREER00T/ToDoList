@@ -24,7 +24,9 @@
                             @csrf
                             @method('DELETE')
                         </form>
-                        <button type="button" id="{{$todo->id}}" class="btn btn-outline-danger">Delete</button>
+                        <button type="button" id="{{$todo->id}}" onclick="onClickDeleteButton(this.id)"
+                                class="btn btn-outline-danger">Delete
+                        </button>
 
                     </div>
                 </li>
@@ -32,4 +34,27 @@
         </ul>
     </div>
 
+    <script>
+        function onClickDeleteButton(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete this todo?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let form = document.getElementById('delete-form-' + id);
+                    form.submit();
+                    Swal.fire(
+                        'Deleted!',
+                        'Your todo has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
 @endsection
