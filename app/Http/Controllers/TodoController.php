@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TodoCreateRequest;
 use App\Models\Todo;
+use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
@@ -16,6 +17,12 @@ class TodoController extends Controller
     public function create()
     {
         return view('todos.create');
+    }
+
+    public function delete(Todo $todo)
+    {
+        $todo->delete();
+        return redirect(route('todo.index'));
     }
 
     public function update(TodoCreateRequest $request, Todo $todo)
@@ -32,6 +39,6 @@ class TodoController extends Controller
     public function store(TodoCreateRequest $request)
     {
         Todo::create($request->all());
-        return redirect()->back()->with('message', 'Todo Created Successfully');
+        return redirect(route('todo.index'));
     }
 }
